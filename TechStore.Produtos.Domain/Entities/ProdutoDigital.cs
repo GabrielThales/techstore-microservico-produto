@@ -11,7 +11,14 @@ namespace TechStore.Produtos.Domain.Entities
         public string Categoria { get; set; }
         public double Preco { get; set; }
         public string Descricao { get; set; }
-        public string ImagemProdutoURL { get; set; }
-        public string Status { get; set; }
+
+        public ProdutoDigital(string nome, string categoria, double preco, string descricao)
+        {
+            Id = Guid.NewGuid();
+            Nome = nome;
+            Categoria = categoria;
+            Preco = preco;
+            Descricao = descricao;
+        }
     }
 }

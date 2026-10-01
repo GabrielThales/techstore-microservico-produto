@@ -10,7 +10,5 @@ namespace TechStore.Produtos.Application.DTOs
         public string Categoria { get; set; }
         public double Preco { get; set; }
         public string Descricao { get; set; }
-        public string ImagemProdutoURL { get; set; }
-        public string Status { get; set; }
     }
 }
