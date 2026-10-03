@@ -43,5 +43,33 @@ namespace TechStore.Produtos.Application.Services
             return produtoResponse;
         }
 
+        public async Task<IEnumerable<ProdutoResponse>> ListProdutosAsync()
+        {
+            var produtos = await _produtoDigitalRepository.GetTodosProdutos();
+            return produtos.Select(p => new ProdutoResponse(
+                p.Id,
+                p.Nome,
+                p.Categoria,
+                p.Preco,
+                p.Descricao
+            ));
+        }
+
+        public async Task UpdateProdutoAsync(Guid id, ProdutoRequest produtoRequest)
+        {
+            var produto = await _produtoDigitalRepository.GetProdutoById(id);
+            produto.Nome = produtoRequest.Nome;
+            produto.Categoria = produtoRequest.Categoria;
+            produto.Preco = produtoRequest.Preco;
+            produto.Descricao = produtoRequest.Descricao;
+            await _produtoDigitalRepository.UpdateProduto(produto);
+        }
+
+        public async Task DeleteProdutoAsync(Guid id)
+        {
+
+            await _produtoDigitalRepository.DeleteProduto(id);
+        }
+
     }
 }
